@@ -2,8 +2,8 @@ import akka.actor.{Actor, ActorLogging, ActorSystem, Inbox, Props}
 
 import scala.concurrent.duration._
 
-case object Greet
 case class WhoToGreet(who: String)
+
 case class Greeting(message: String)
 
 class Greeter extends Actor {
@@ -11,9 +11,20 @@ class Greeter extends Actor {
 
   def receive = {
     case WhoToGreet(who) => greeting = s"hello, $who"
-    case Greet           => sender ! Greeting(greeting) // Send the current greeting back to the sender
+    case Greet => sender ! Greeting(greeting) // Send the current greeting back to the sender
   }
 }
+
+// prints a greeting
+class GreetPrinter extends Actor with ActorLogging {
+  def receive = {
+    case Greeting(message) =>
+      println(message)
+      sender ! message
+  }
+}
+
+case object Greet
 
 object HelloAkkaScala extends App {
 
@@ -46,14 +57,5 @@ object HelloAkkaScala extends App {
   val greetPrinter = system.actorOf(Props[GreetPrinter])
   // after zero seconds, send a Greet message every second to the greeter with a sender of the greetPrinter
   system.scheduler.schedule(0.seconds, 1.second, greeter, Greet)(system.dispatcher, greetPrinter)
-  
-}
 
-// prints a greeting
-class GreetPrinter extends Actor  with ActorLogging{
-  def receive = {
-    case Greeting(message) =>
-      println(message)
-      sender ! message
-  }
 }

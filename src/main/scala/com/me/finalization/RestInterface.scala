@@ -1,6 +1,6 @@
 package com.me.finalization
 
-import akka.actor.{Actor, ActorLogging}
+import akka.actor.Actor
 import akka.io.IO
 import com.me.finalization.Domain.{Container, Junction}
 import com.me.finalization.Messages.Go
@@ -13,9 +13,9 @@ import spray.routing.{HttpServiceBase, Route}
   */
 class RestService(exposedPort: Int) extends Actor with RestInterface {
 
-  def receive = runRoute(route)
-
   implicit val system = context.system
+
+  def receive = runRoute(route)
   IO(Http) ! Http.Bind(self, interface = "0.0.0.0", port = exposedPort)
 }
 

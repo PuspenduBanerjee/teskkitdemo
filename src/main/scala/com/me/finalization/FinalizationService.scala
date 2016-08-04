@@ -15,16 +15,16 @@ import scala.concurrent.duration._
 
 
 // prints a greeting
-class FinalizationActor extends Actor  with ActorLogging{
+class FinalizationActor extends Actor with ActorLogging {
   def receive = {
-    case FinalizationRequest(buId,finalizationDate) =>
+    case FinalizationRequest(buId, finalizationDate) =>
       println(s"got It! BU: $buId  FinalizationDate: $finalizationDate")
-      sender ! FinalizationResponse(buId,finalizationDate)
+      sender ! FinalizationResponse(buId, finalizationDate)
   }
 }
 
 
-object FinalizationService extends App{
+object FinalizationService extends App {
 
 
   // we need an ActorSystem to host our application in
@@ -38,5 +38,5 @@ object FinalizationService extends App{
 
   implicit val timeout = Timeout(5.seconds)
   // start a new HTTP server on port 8080 with our service actor as the handler
-  IO(Http) ?  Http.Bind(service, interface = "localhost", port = 18080)
+  IO(Http) ? Http.Bind(service, interface = "localhost", port = 18080)
 }

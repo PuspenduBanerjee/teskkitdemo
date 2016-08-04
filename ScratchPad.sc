@@ -4,6 +4,6 @@ class Greeter extends Actor {
   var greeting = ""
 
   def receive = {
-    case WhoToGreet(who) => println( s"hello, $who")
+    case WhoToGreet(who) => println(s"hello, $who")
   }
 }
