@@ -1,5 +1,7 @@
+import akka.actor.ActorSystem
 import com.me.finalization.RestInterface
-import org.scalatest.{Matchers, WordSpec}
+import com.typesafe.config.ConfigFactory
+import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 import spray.testkit.ScalatestRouteTest
 
 import scala.concurrent.duration._
@@ -7,9 +9,17 @@ import scala.concurrent.duration._
 /**
   * Created by puspendu on 8/3/16.
   */
-class RestInterfaceUsageSpec  extends  WordSpec  with Matchers with ScalatestRouteTest with RestInterface{
-  def actorRefFactory = system
+class RestInterfaceUsageSpec  extends  WordSpec  with Matchers
+  with ScalatestRouteTest with RestInterface
+  with BeforeAndAfterAll{
+  def actorRefFactory = ActorSystem(
+    "RestInterfaceUsageSpec",
+    ConfigFactory.parseString(RestInterfaceUsageSpec.config))
   //val restInterfaceRef=system.actorOf(Props(new RestService(8080)),"restinterfaceRef")
+
+  override def afterAll {
+    actorRefFactory.terminate()
+  }
 
   "A RestInterface" should {
     "Respond with Conveyor Belt Id where the package should be routed to" in {
@@ -37,7 +47,8 @@ object RestInterfaceUsageSpec {
   val config =
   """
     akka {
-      loglevel = "WARN"
+      loglevel = "WARNING"
+      stdout-loglevel = "WARNING"
     }
                """
 
