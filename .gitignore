@@ -1,0 +1,7 @@
+/target/
+/.idea/
+/.settings/
+/.cache-main
+/.classpath
+/.project
+/blah.iml
