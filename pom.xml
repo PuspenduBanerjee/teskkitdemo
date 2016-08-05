@@ -6,7 +6,32 @@
     <version>0.0.1-SNAPSHOT</version>
     <properties>
         <akka.version>2.4.8</akka.version>
+        <scoverage.plugin.version>1.1.1</scoverage.plugin.version>
+        <scoverage.excludedFiles>.*Finalization.*;.*MyService.*;.*package\.scala</scoverage.excludedFiles>
+        <scoverage.excludedPackages>(empty)</scoverage.excludedPackages>
+        <scala.version>2.11.8</scala.version>
     </properties>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.scoverage</groupId>
+                <artifactId>scoverage-maven-plugin</artifactId>
+                <version>${scoverage.plugin.version}</version>
+                <configuration>
+                    <highlighting>true</highlighting>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                            <!-- or <report>integration-report</report> -->
+                            <!-- or <report>report-only</report> -->
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
 
     <build>
@@ -60,6 +85,18 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+            <groupId>org.scoverage</groupId>
+            <artifactId>scoverage-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>report</goal> <!-- or integration-check -->
+                    </goals>
+                    <phase>prepare-package</phase> <!-- or any other phase -->
+                </execution>
+            </executions>
             </plugin>
         </plugins>
     </build>
