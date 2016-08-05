@@ -3,9 +3,9 @@
 A space for myself to learn and share more on Scala, Akka and related paradigm.
 It's not a product or anything of that kind. It's pureplay ScratchPad :P
 
-What has been covered:
-1. Akka Actor Model
-       a. Stateless
-2. Scala Test
-3. Spray Test -- Decoupled webservice testing with Spray's English like Descriptive  DSL
-4. Akka Testkit -- Test your Actors 
+#What has been covered:
+1.  Akka Actor Model
+       * Stateless
+2.  Scala Test
+3.  Spray Test -- Decoupled webservice testing with Spray's English like Descriptive  DSL
+4.  Akka Testkit -- Test your Actors 
