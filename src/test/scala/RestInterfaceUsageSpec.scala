@@ -1,5 +1,5 @@
-import akka.actor.ActorSystem
-import com.me.finalization.RestInterface
+import akka.actor.{ActorRef, ActorSystem, Props}
+import com.me.finalization.{DecidersGuardian, RestInterface}
 import com.typesafe.config.ConfigFactory
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 import spray.testkit.ScalatestRouteTest
@@ -10,6 +10,7 @@ import spray.testkit.ScalatestRouteTest
 class RestInterfaceUsageSpec extends WordSpec with Matchers
   with ScalatestRouteTest with RestInterface
   with BeforeAndAfterAll {
+
   override def afterAll {
     actorRefFactory.terminate()
   }
@@ -19,6 +20,8 @@ class RestInterfaceUsageSpec extends WordSpec with Matchers
   def actorRefFactory = ActorSystem(
     "RestInterfaceUsageSpec",
     ConfigFactory.parseString(RestInterfaceUsageSpec.config))
+
+  override def decider: ActorRef = actorRefFactory.actorOf(Props[DecidersGuardian], "mockABackEndctorRef") //route has dependency on this
 
   "A RestInterface" should {
     "Respond with Conveyor Belt Id where the package should be routed to" in {
