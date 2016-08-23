@@ -9,3 +9,4 @@ It's not a product or anything of that kind. It's pureplay ScratchPad :P
 2.  Scala Test
 3.  Spray Test -- Decoupled webservice testing with Spray's English like Descriptive  DSL
 4.  Akka Testkit -- Test your Actors 
+5.  Added Camel Route for Http Interface via Jetty exploiting akka-camel Actor. rest-->jetty-->camel-->akka
