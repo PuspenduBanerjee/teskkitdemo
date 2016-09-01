@@ -6,13 +6,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- * Created by 258265 on 8/31/2016.
+ * Created by Puspendu on 8/31/2016.
  */
     @Path("/")
     public interface FinalizationResource {
 
         @GET
-        @Produces(MediaType.APPLICATION_JSON)
+        @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
         DummyResponse getInfo();
 
 
