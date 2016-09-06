@@ -1,20 +1,19 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cxf="http://cxf.apache.org/core"
-       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
-       xsi:schemaLocation="http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
-                           http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
-                           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf2="http://camel.apache.org/schema/cxf"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
     <!-- JAXRS providers -->
     <bean id="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
 
     <!--&lt;!&ndash; Application resources &ndash;&gt;-->
     <!--<bean id="sampleResource" class="demo.jaxrs.swagger.server.Sample" />-->
 
-    <!--&lt;!&ndash; CXF Swagger2Feature &ndash;&gt;-->
-    <!--<bean id="swagger2Feature" class="org.apache.cxf.jaxrs.swagger.Swagger2Feature">-->
-        <!--&lt;!&ndash; customize some of the properties &ndash;&gt;-->
-        <!--<property name="basePath" value="/app/swaggerSample"/>-->
-    <!--</bean>-->
+    <!-- CXF Swagger2Feature -->
+    <bean id="swagger2Feature" class="org.apache.cxf.jaxrs.swagger.Swagger2Feature">
+        <!-- customize some of the properties -->
+        <property name="basePath" value="/app/swaggerSample"/>
+    </bean>
 
     <!--<jaxrs:server id="sampleServer" address="/swaggerSample">-->
         <!--<jaxrs:serviceBeans>-->
@@ -27,4 +26,16 @@
             <!--<ref bean="swagger2Feature" />-->
         <!--</jaxrs:features>-->
     <!--</jaxrs:server>-->
+
+    <!-- Defined the server endpoint to create the cxf-rs consumer -->
+    <cxf2:rsServer id="rsServer" address="http://localhost:18878/CxfRsRouterTest/route"
+                   serviceClass="com.me.finalization.rest.FinalizationResource"
+                   loggingFeatureEnabled="true" loggingSizeLimit="20" skipFaultLogging="true">
+        <cxf2:providers>
+            <ref bean="jsonProvider"/>
+        </cxf2:providers>
+        <cxf2:features>
+            <ref bean="swagger2Feature"/>
+        </cxf2:features>
+    </cxf2:rsServer>
 </beans>
