@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 
 import static system.SpringExtension.SpringExtProvider;
 
@@ -12,6 +13,7 @@ import static system.SpringExtension.SpringExtProvider;
  * The application configuration.
  */
 @Configuration
+@ImportResource("classpath*:**/applicationContext.xml")
 class AppConfiguration {
 
     // the application context is needed to initialize the Akka Spring Extension
