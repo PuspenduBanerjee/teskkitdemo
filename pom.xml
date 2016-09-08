@@ -11,11 +11,16 @@
         <scoverage.excludedPackages>(empty)</scoverage.excludedPackages>
         <scala.version>2.11.8</scala.version>
         <camel.version>2.17.3</camel.version>
+        <cxf.version>3.1.8-SNAPSHOT</cxf.version>
     </properties>
     <repositories>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>apache-snapshots</id>
+            <url>http://repository.apache.org/snapshots</url>
         </repository>
     </repositories>
     <reporting>
@@ -214,13 +219,13 @@
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http-jetty</artifactId>
-            <version>3.1.7</version>
+            <version>${cxf.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-extension-providers -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-extension-providers</artifactId>
-            <version>3.1.7</version>
+            <version>${cxf.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.codehaus.jettison/jettison -->
         <dependency>
@@ -241,12 +246,17 @@
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-service-description</artifactId>
-            <version>3.1.7</version>
+            <version>${cxf.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-rs-service-description-swagger</artifactId>
-            <version>3.1.7</version>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>swagger-ui</artifactId>
+            <version>2.2.2</version>
         </dependency>
         <dependency>
             <groupId>com.github.PuspenduBanerjee</groupId>

@@ -13,6 +13,7 @@
     <bean id="swagger2Feature" class="org.apache.cxf.jaxrs.swagger.Swagger2Feature">
         <property name="runAsFilter" value="true"/>
         <property name="resourcePackage" value="com.me.finalization.rest"/>
+        <property name="title" value="ScalaAkkaBlah: Swagger UI"/>
     </bean>
 
     <bean id="originFilter" class="com.me.finalization.rest.ApiOriginFilter"/>

@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Created by Puspendu on 8/31/2016.
  */
-@Path("/services")
+@Path("/service")
 @Api
     public interface FinalizationResource {
 
