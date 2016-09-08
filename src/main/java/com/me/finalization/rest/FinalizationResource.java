@@ -1,5 +1,7 @@
 package com.me.finalization.rest;
 
+import io.swagger.annotations.Api;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -9,7 +11,8 @@ import javax.ws.rs.core.MediaType;
 /**
  * Created by Puspendu on 8/31/2016.
  */
-    @Path("/")
+@Path("/services")
+@Api
     public interface FinalizationResource {
 
         @GET

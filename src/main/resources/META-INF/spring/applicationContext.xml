@@ -11,10 +11,11 @@
 
     <!-- CXF Swagger2Feature -->
     <bean id="swagger2Feature" class="org.apache.cxf.jaxrs.swagger.Swagger2Feature">
-        <!-- customize some of the properties -->
-        <property name="basePath" value="/app/swaggerSample"/>
+        <property name="runAsFilter" value="true"/>
+        <property name="resourcePackage" value="com.me.finalization.rest"/>
     </bean>
 
+    <bean id="originFilter" class="com.me.finalization.rest.ApiOriginFilter"/>
 
     <!-- Defined the server endpoint to create the cxf-rs consumer -->
     <cxf2:rsServer id="rsServer" address="http://localhost:18878/CxfRsRouterTest/route"
@@ -22,6 +23,7 @@
                    loggingFeatureEnabled="true" loggingSizeLimit="20" skipFaultLogging="true">
         <cxf2:providers>
             <ref bean="jsonProvider"/>
+            <ref bean="originFilter"/>
         </cxf2:providers>
         <cxf2:features>
             <ref bean="swagger2Feature"/>
