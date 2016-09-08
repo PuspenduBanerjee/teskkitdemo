@@ -11,6 +11,12 @@
         <scoverage.excludedPackages>(empty)</scoverage.excludedPackages>
         <scala.version>2.11.8</scala.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
     <reporting>
         <plugins>
             <plugin>
@@ -236,10 +242,15 @@
             <artifactId>cxf-rt-rs-service-description</artifactId>
             <version>3.1.6</version>
         </dependency>
+        <!--<dependency>-->
+        <!--<groupId>com.github.puspendubanerjee</groupId>-->
+        <!--<artifactId>akka-springctx-camel</artifactId>-->
+        <!--<version>0.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>com.github.puspendubanerjee</groupId>
+            <groupId>com.github.PuspenduBanerjee</groupId>
             <artifactId>akka-springctx-camel</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
 
