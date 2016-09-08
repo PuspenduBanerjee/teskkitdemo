@@ -15,17 +15,6 @@
         <property name="basePath" value="/app/swaggerSample"/>
     </bean>
 
-    <!--<jaxrs:server id="sampleServer" address="/swaggerSample">-->
-        <!--<jaxrs:serviceBeans>-->
-            <!--<ref bean="sampleResource" />-->
-        <!--</jaxrs:serviceBeans>-->
-        <!--<jaxrs:providers>-->
-            <!--<ref bean="jsonProvider" />-->
-        <!--</jaxrs:providers>-->
-        <!--<jaxrs:features>-->
-            <!--<ref bean="swagger2Feature" />-->
-        <!--</jaxrs:features>-->
-    <!--</jaxrs:server>-->
 
     <!-- Defined the server endpoint to create the cxf-rs consumer -->
     <cxf2:rsServer id="rsServer" address="http://localhost:18878/CxfRsRouterTest/route"

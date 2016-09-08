@@ -13,14 +13,6 @@ object SingleNodeApp extends App {
 //  system.actorOf(Props[CamelRestInterface])
   val ctx = new AnnotationConfigApplicationContext()
   ctx.scan("system")
-  //  val pmrl:PathMatchingResourcePatternResolver = new PathMatchingResourcePatternResolver(ctx.getClassLoader())
-  //  val resources = pmrl.getResources(
-  //    "classpath*:**/applicationContext.xml"
-  //  )
-  //  resources.map(r => {
-  //    val reader = new XmlBeanDefinitionReader(ctx);
-  //    val i = reader.loadBeanDefinitions(r);
-  //  })
   ctx.refresh()
   // get hold of the actor system
   implicit val system = ctx.getBean(classOf[ActorSystem])
