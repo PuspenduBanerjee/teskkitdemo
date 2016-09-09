@@ -1,4 +1,4 @@
-package com.me.finalization.rest;
+package com.me.finalization.rest.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

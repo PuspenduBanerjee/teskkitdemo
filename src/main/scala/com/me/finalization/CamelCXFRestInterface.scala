@@ -8,7 +8,7 @@ package com.me.finalization
 
 import akka.actor.{Actor, ActorRef, ActorSystem}
 import akka.camel.{CamelMessage, _}
-import com.me.finalization.rest.DummyResponse
+import com.me.finalization.rest.model.DummyResponse
 import org.apache.camel.builder.RouteBuilder
 
 case class Request(body: java.util.List[String], headers: java.util.Map[String, Object])

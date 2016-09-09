@@ -12,15 +12,17 @@
     <!-- CXF Swagger2Feature -->
     <bean id="swagger2Feature" class="org.apache.cxf.jaxrs.swagger.Swagger2Feature">
         <property name="runAsFilter" value="true"/>
-        <property name="resourcePackage" value="com.me.finalization.rest"/>
+        <property name="resourcePackage" value="com.me.finalization.rest.resources"/>
         <property name="title" value="ScalaAkkaBlah: Swagger UI"/>
+        <property name="version" value="2.0.0"/>
+        <property name="contact" value=" Puspendu"/>
     </bean>
 
     <bean id="originFilter" class="com.me.finalization.rest.ApiOriginFilter"/>
 
     <!-- Defined the server endpoint to create the cxf-rs consumer -->
     <cxf2:rsServer id="rsServer" address="http://localhost:18878/CxfRsRouterTest/route"
-                   serviceClass="com.me.finalization.rest.FinalizationResource"
+                   serviceClass="com.me.finalization.rest.resources.FinalizationResource"
                    loggingFeatureEnabled="true" loggingSizeLimit="20" skipFaultLogging="true">
         <cxf2:providers>
             <ref bean="jsonProvider"/>
