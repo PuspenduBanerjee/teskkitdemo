@@ -10,7 +10,7 @@
         <scoverage.excludedFiles>.*Finalization.*;.*MyService.*;.*package\.scala</scoverage.excludedFiles>
         <scoverage.excludedPackages>(empty)</scoverage.excludedPackages>
         <scala.version>2.11.8</scala.version>
-        <camel.version>2.17.3</camel.version>
+        <camel.version>2.24.2</camel.version>
         <cxf.version>3.1.8-SNAPSHOT</cxf.version>
     </properties>
     <repositories>
